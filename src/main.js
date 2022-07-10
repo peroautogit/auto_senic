@@ -49,13 +49,13 @@ const runTask = async () => {
           parse_mode: "markdown",
         }),
         success: function (res) {
-            console.debug(res);
-            $('#response').text('Message sent');
+          console.debug(res);
+          $("#response").text("Message sent");
         },
         error: function (error) {
-            console.error(error);
-            alert("error failed");
-        }
+          console.error(error);
+          alert("error failed");
+        },
       });
     });
   }
@@ -82,20 +82,23 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
+  console.log(htmlString);
   const dom = new jsdom.JSDOM(htmlString);
-    
+
   console.log("parsing njuskalo.hr data");
-  const result = dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--VauVau.EntityList--ListItemVauVauAd.EntityList--itemCount_6");// do tuda radi kako treba, neznam sta tu treeba hvatat
+  const result = dom.window.document.querySelectorAll(
+    ".EntityList.EntityList--Standard.EntityList--VauVau.EntityList--ListItemVauVauAd.EntityList--itemCount_6"
+  ); // do tuda radi kako treba, neznam sta tu treeba hvatat
   console.table(dom);
   for (const element of result) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href;//i ovo
+    const urlPath = element?.querySelectorAll("a")?.[0]?.href; //i ovo
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
 
-    path = path.replace("?navigateSource=resultlist", "");//ovaj dio.
+    path = path.replace("?navigateSource=resultlist", ""); //ovaj dio.
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
       houses.push({
