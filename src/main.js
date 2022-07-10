@@ -87,8 +87,6 @@ const runPuppeteer = async (url) => {
 
     path = path.replace("?navigateSource=resultlist", "");
     if (path && !pastResults.has(path) && !newResults.has(path)) {
-      
-
       newResults.add(path);
       houses.push({
         path,
