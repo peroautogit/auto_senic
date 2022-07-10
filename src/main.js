@@ -36,27 +36,19 @@ const runTask = async () => {
 
     console.log("sending messages to Telegram");
     houses.forEach(({ path }) => {
-      let text = `Nova nekretnina na njuškalu: [click here](${path})`;
-
-      nodeFetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
+      let glava = `Nova nekretnina na njuškalu: [click here](${path})`;
+      let options = {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+        headers: {Accept: 'application/json',
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          text,
+          text: glava,
           chat_id: CHAT_ID,
           parse_mode: "markdown",
         }),
-        success: function (res) {
-          console.debug(res);
-          $("#response").text("Message sent");
-        },
-        error: function (error) {
-          console.error(error);
-          alert("error failed");
-        },
-      });
+      };
+      nodeFetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, options);
     });
   }
 };
