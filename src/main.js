@@ -82,7 +82,6 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
-  console.log(htmlString);
   const dom = new jsdom.JSDOM(htmlString);
 
   console.log("parsing njuskalo.hr data");
