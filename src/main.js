@@ -81,17 +81,17 @@ const runPuppeteer = async (url) => {
   const dom = new jsdom.JSDOM(htmlString);
 
   console.log("parsing njuskalo.hr data");
-  const result = dom.window.document.querySelectorAll(".entity-title"); // do tuda radi kako treba, neznam sta tu treeba hvatat
+  const result = dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd"); // do tuda radi kako treba, neznam sta tu treeba hvatat
   console.log(result);
   for (const element of result) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href; //i ovo
+    const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
 
-    path = path.replace("?navigateSource=resultlist", ""); //ovaj dio.
+    path = path.replace("?navigateSource=resultlist", ""); 
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
       houses.push({
