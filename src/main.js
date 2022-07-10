@@ -78,16 +78,16 @@ const runPuppeteer = async (url) => {
   const dom = new jsdom.JSDOM(htmlString);
 
   console.log("parsing njuskalo.hr data");
-  const result = dom.window.document.querySelectorAll(".search-result");
+  const result = dom.window.document.querySelectorAll(".search-result");// do tuda radi kako treba, neznam sta tu treeba hvatat
   for (const element of result) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href;
+    const urlPath = element?.querySelectorAll("li")?.[0]?.data-href;//i ovo
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
 
-    path = path.replace("?navigateSource=resultlist", "");
+    path = path.replace("?navigateSource=resultlist", "");//ovaj dio.
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
       houses.push({
