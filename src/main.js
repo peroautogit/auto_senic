@@ -76,9 +76,10 @@ const runPuppeteer = async (url) => {
 
   const htmlString = await page.content();
   const dom = new jsdom.JSDOM(htmlString);
-    console.table(dom);
+    
   console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(".items");// do tuda radi kako treba, neznam sta tu treeba hvatat
+  console.table(dom);
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href;//i ovo
 
