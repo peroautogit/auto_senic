@@ -37,10 +37,12 @@ const runTask = async () => {
     console.log("sending messages to Telegram");
     houses.forEach(({ path }) => {
       let glava = `Nova nekretnina na njuškalu: [click here](${path})`;
+      console.log(glava);
       let options = {
         method: "POST",
-        headers: {Accept: 'application/json',
-          "Content-Type": "application/json"
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           text: glava,
@@ -48,7 +50,10 @@ const runTask = async () => {
           parse_mode: "markdown",
         }),
       };
-      nodeFetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, options);
+      nodeFetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, options)
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        .catch((err) => console.error(err));
     });
   }
 };
