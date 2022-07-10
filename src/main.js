@@ -17,8 +17,8 @@ const { CHAT_ID, BOT_API } = process.env;
 const urls = [
   "https://www.njuskalo.hr/prodaja-stanova?geo%5BlocationIds%5D=1248%2C1250%2C1252%2C1262%2C1261&price%5Bmax%5D=200000",
   "https://www.njuskalo.hr/prodaja-kuca/zagreb?price%5Bmax%5D=200000",
-  "https://www.njuskalo.hr/prodaja-stanova/labin?price%5Bmax%5D=200000&includeOtherCategories=1",
-  "https://www.njuskalo.hr/prodaja-stanova/pula?price%5Bmax%5D=200000&includeOtherCategories=1",
+  "https://www.njuskalo.hr/prodaja-stanova/labin?price%5Bmax%5D=200000",
+  "https://www.njuskalo.hr/prodaja-stanova/pula?price%5Bmax%5D=200000",
 ];
 
 const runTask = async () => {
@@ -83,7 +83,7 @@ const runPuppeteer = async (url) => {
 
   console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(".EntityList-items"); // do tuda radi kako treba, neznam sta tu treeba hvatat
-
+    console.table(result)
   console.table(result);
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; //i ovo
