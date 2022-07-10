@@ -76,11 +76,11 @@ const runPuppeteer = async (url) => {
 
   const htmlString = await page.content();
   const dom = new jsdom.JSDOM(htmlString);
-
+    console.table(dom);
   console.log("parsing njuskalo.hr data");
-  const result = dom.window.document.querySelectorAll(".search-result");// do tuda radi kako treba, neznam sta tu treeba hvatat
+  const result = dom.window.document.querySelectorAll(".items");// do tuda radi kako treba, neznam sta tu treeba hvatat
   for (const element of result) {
-    const urlPath = element?.querySelectorAll("li")?.[0]?.data-href;//i ovo
+    const urlPath = element?.querySelectorAll("a")?.[0]?.href;//i ovo
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
