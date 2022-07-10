@@ -37,7 +37,6 @@ const runTask = async () => {
     console.log("sending messages to Telegram");
     houses.forEach(({ path }) => {
       let glava = `Nova nekretnina na njuškalu: [click here](${path})`;
-      console.log(glava);
       let options = {
         method: "POST",
         headers: {
@@ -83,8 +82,7 @@ const runPuppeteer = async (url) => {
 
   console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(".EntityList-items"); // do tuda radi kako treba, neznam sta tu treeba hvatat
-    console.table(result)
-  console.table(result);
+  console.log(result);
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; //i ovo
 
