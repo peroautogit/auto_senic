@@ -85,6 +85,7 @@ const runPuppeteer = async (url) => {
   console.log(result);
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
+    console.log(urlPath);
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
