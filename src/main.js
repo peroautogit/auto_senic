@@ -81,7 +81,7 @@ const runPuppeteer = async (url) => {
   const dom = new jsdom.JSDOM(htmlString);
 
   console.log("parsing njuskalo.hr data");
-  const result = dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd"); // do tuda radi kako treba, neznam sta tu treeba hvatat
+  const result = dom.window.document.querySelectorAll("#form_browse_detailed_search > div > div.content-main > div.block-standard.block-standard--epsilon > div.EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd.EntityList--itemCount_35738 > ul"); // do tuda radi kako treba, neznam sta tu treeba hvatat
   console.log(result);
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
