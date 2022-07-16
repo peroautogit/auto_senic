@@ -83,9 +83,9 @@ const runPuppeteer = async (url) => {
 
   console.log("parsing njuskalo.hr data");
   const result =dom.window.document.querySelectorAll(".EntityList--Standard > .EntityList-items");
-  for (let i = 0, element; (element = result[i]); i++) {
-    console.log(element);
-  }
+  for (i = 0; i < result.length; i++) {
+    console.log(result[i].innerHTML);
+}
   // const podresult =dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd")
   // console.log('ovo je podresult /n: '+ podresult)
   for (const element of result) {
