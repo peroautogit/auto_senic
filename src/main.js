@@ -88,13 +88,12 @@ const runPuppeteer = async (url) => {
   // console.log('ovo je podresult /n: '+ podresult)
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
-    console.log('Ovo je urlpath /n'+urlPath);
+    console.log('Ovo je urlpath '+urlPath);
 
     let path = urlPath;
-    if (!path.includes("https://www.njuskalo.hr")) {
+    if (!path.includes("https://www.njuskalo.hr")&&path!==undefined) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
-    console.log({urlPath});
     path = path.replace("?navigateSource=resultlist", ""); 
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
