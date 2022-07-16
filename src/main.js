@@ -83,31 +83,11 @@ const runPuppeteer = async (url) => {
 
   console.log("parsing njuskalo.hr data");
   const result =dom.window.document.querySelectorAll(".EntityList--Standard > .EntityList-items");
-  for (i = 0; i < result.length; i++) {
-    console.log(result[i].innerHTML);
-}
-const vauvauoglasi = result.querySelector('.EntityList-Standard:nth-child(1)')
-const novioglasi= result.querySelector('.EntityList-Standard:nth-child(2)')
+  // for (i = 0; i < result.length; i++) {
+  //   console.log(result[i].innerHTML);
+  // }
 
-  // const podresult =dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd")
-  // console.log('ovo je podresult /n: '+ podresult)
-  for (const element of novioglasi) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
-    console.log('Ovo je urlpath '+urlPath);
-
-    let path = urlPath;
-    if (!path.includes("https://www.njuskalo.hr")&&path!==undefined) {
-      path = `https://www.njuskalo.hr${urlPath}`;
-    }
-    path = path.replace("?navigateSource=resultlist", ""); 
-    if (path && !pastResults.has(path) && !newResults.has(path)) {
-      newResults.add(path);
-      houses.push({
-        path,
-      });
-    }
-  }
-  for (const element of vauvauoglasi) {
+  for (const element of result[0]) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
     console.log('Ovo je urlpath '+urlPath);
 
