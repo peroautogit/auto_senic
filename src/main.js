@@ -73,15 +73,16 @@ const runPuppeteer = async (url) => {
 
   console.log("going to njuskalo on link" + url);
   await page.goto(url, { waitUntil: "domcontentloaded" });
-
-  let htmlString = await page.content();
+  let htmlString = "";
+  let dom = "";
+  let result = "";
   
-  let dom = new jsdom.JSDOM(htmlString);
+  htmlString = await page.content();
 
-  console.log("parsing njuskalo.hr data"+ url);
-  let result = dom.window.document.querySelectorAll(
-    ".EntityList-item--Regular"
-  );
+  dom = new jsdom.JSDOM(htmlString);
+
+  console.log("parsing njuskalo.hr data" + url);
+  result = dom.window.document.querySelectorAll(".EntityList-item--Regular");
   // for (let i = 0, element; (element = result[i]); i++) {
   //   console.log(element.innerHTML);
   // }
@@ -101,7 +102,7 @@ const runPuppeteer = async (url) => {
       });
     }
   }
-  
+
   htmlString = "";
   dom = "";
   result = "";
