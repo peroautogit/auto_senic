@@ -75,10 +75,10 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   let htmlString = await page.content();
-
+  
   let dom = new jsdom.JSDOM(htmlString);
 
-  console.log("parsing njuskalo.hr data");
+  console.log("parsing njuskalo.hr data"+ url);
   let result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
@@ -101,8 +101,10 @@ const runPuppeteer = async (url) => {
       });
     }
   }
-  path= ""
- 
+  
+  htmlString = "";
+  dom = "";
+  result = "";
 
   console.log("closing browser");
   await browser.close();
