@@ -82,7 +82,7 @@ const runPuppeteer = async (url) => {
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
-  console.log('%NodeList',result)
+  console.log('%NodeList',{result})
   for (let i = 0, element; (element = result[i]); i++) {
     console.log('ovo je element'+element.innerHTML);
   }
