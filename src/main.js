@@ -79,10 +79,9 @@ const runPuppeteer = async (url) => {
   const dom = new jsdom.JSDOM(htmlString);
 
   console.log("parsing njuskalo.hr data");
-  const result = dom.window.document.querySelectorAll(
+  let result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
-  console.log('%NodeList',{result})
   for (let i = 0, element; (element = result[i]); i++) {
     console.log('ovo je element'+element.innerHTML);
   }
