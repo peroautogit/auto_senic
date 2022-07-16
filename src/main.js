@@ -82,12 +82,10 @@ const runPuppeteer = async (url) => {
 
 
   console.log("parsing njuskalo.hr data");
-  const result =dom.window.document.querySelectorAll(".EntityList--Standard > .EntityList-items");
-  // for (i = 0; i < result.length; i++) {
-  //   console.log(result[i].innerHTML);
-  // }
+  const result1 =dom.window.document.querySelectorAll(".EntityList--Standard:nth-child(1) > .EntityList-items");
+  const result2 =dom.window.document.querySelectorAll(".EntityList--Standard:nth-child(2) > .EntityList-items");
 
-  for (const element of result[0]) {
+  for (const element of result1) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
     console.log('Ovo je urlpath '+urlPath);
 
