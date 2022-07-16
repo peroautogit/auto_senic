@@ -101,8 +101,6 @@ const runPuppeteer = async (url) => {
     }
   }
 
-  htmlString = '';
-  dom = '';
   result = '';
 
   console.log("closing browser");
