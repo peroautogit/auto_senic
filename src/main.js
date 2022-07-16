@@ -75,7 +75,7 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
-  console.log('Ovo je htmlstring /n'+{htmlString})
+  console.log('Ovo je htmlstring /n'+htmlString)
   const dom = new jsdom.JSDOM(htmlString);
  
 
@@ -83,12 +83,12 @@ const runPuppeteer = async (url) => {
 
   console.log("parsing njuskalo.hr data");
   const result =dom.window.document.querySelectorAll(".block-standard.block-standard--epsilon"); // do tuda radi kako treba, neznam sta tu treeba hvatat
-  console.log('Ovo je rezultat /n'+{result});
+  console.log('Ovo je rezultat /n'+result);
   
   
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
-    console.log('Ovo je urlpath /n'+{urlPath});
+    console.log('Ovo je urlpath /n'+urlPath);
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
