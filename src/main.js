@@ -94,7 +94,6 @@ const runPuppeteer = async (url) => {
     if (!path.includes("https://www.njuskalo.hr") && path !== undefined) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
-    path = path.replace("?navigateSource=resultlist", "");
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
       houses.push({
@@ -102,10 +101,8 @@ const runPuppeteer = async (url) => {
       });
     }
   }
-
-  htmlString = "";
-  dom = "";
-  result = "";
+  path= ""
+ 
 
   console.log("closing browser");
   await browser.close();
