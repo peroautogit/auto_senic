@@ -78,15 +78,11 @@ const runPuppeteer = async (url) => {
  
   const dom = new jsdom.JSDOM(htmlString);
  
-
-
-
   console.log("parsing njuskalo.hr data");
-  const result1 =dom.window.document.querySelectorAll(".EntityList--Standard:nth-child(1) > .EntityList-items");
-  const result2 =dom.window.document.querySelectorAll(".EntityList--Standard:nth-child(2) > .EntityList-items");
+  const result =dom.window.document.querySelectorAll(".EntityList-Item--Regular");
 
-  for (const element of result1) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
+  for (const element of result) {
+    const urlPath = element.href; 
     console.log('Ovo je urlpath '+urlPath);
 
     let path = urlPath;
