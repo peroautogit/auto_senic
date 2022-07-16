@@ -15,8 +15,8 @@ const houses = [];
 const { CHAT_ID, BOT_API } = process.env;
 
 const urls = [
- " https://www.njuskalo.hr/prodaja-stanova",
- " https://www.njuskalo.hr/prodaja-kuca"
+  " https://www.njuskalo.hr/prodaja-kuca",
+  " https://www.njuskalo.hr/prodaja-stanova",
 ];
 
 const runTask = async () => {
@@ -65,34 +65,36 @@ const runPuppeteer = async (url) => {
     },
   });
 
-  let page = await browser.newPage();
+  const page = await browser.newPage();
   // https://stackoverflow.com/a/51732046/4307769 https://stackoverflow.com/a/68780400/4307769
   await page.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
 
-  console.log("going to njuskalo on link"+ url);
+  console.log("going to njuskalo on link" + url);
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   let htmlString = await page.content();
- 
+
   let dom = new jsdom.JSDOM(htmlString);
- 
+
   console.log("parsing njuskalo.hr data");
-  let result = dom.window.document.querySelectorAll(".EntityList-item--Regular");
+  let result = dom.window.document.querySelectorAll(
+    ".EntityList-item--Regular"
+  );
   // for (let i = 0, element; (element = result[i]); i++) {
   //   console.log(element.innerHTML);
   // }
 
   for (const element of result) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
+    const urlPath = element?.querySelectorAll("a")?.[0]?.href;
     // console.log('Ovo je urlpath '+urlPath);
 
     let path = urlPath;
-    if (!path.includes("https://www.njuskalo.hr")&&path!==undefined) {
+    if (!path.includes("https://www.njuskalo.hr") && path !== undefined) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
-    path = path.replace("?navigateSource=resultlist", ""); 
+    path = path.replace("?navigateSource=resultlist", "");
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
       houses.push({
@@ -101,9 +103,9 @@ const runPuppeteer = async (url) => {
     }
   }
 
-  htmlString = ''
-  dom = '';
-  result = '';
+  htmlString = "";
+  dom = "";
+  result = "";
 
   console.log("closing browser");
   await browser.close();
