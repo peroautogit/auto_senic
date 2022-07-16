@@ -71,7 +71,7 @@ const runPuppeteer = async (url) => {
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
 
-  console.log("going to njuskalo");
+  console.log("going to njuskalo on link"+ url);
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
