@@ -73,19 +73,17 @@ const runPuppeteer = async (url) => {
 
   console.log("going to njuskalo on link" + url);
   await page.goto(url, { waitUntil: "domcontentloaded" });
-  let htmlString = "";
-  let dom = "";
-  let result = "";
   
-  htmlString = await page.content();
 
-  dom = new jsdom.JSDOM(htmlString);
+  const htmlString = await page.content();
+
+  const dom = new jsdom.JSDOM(htmlString);
 
   console.log("parsing njuskalo.hr data" + url);
-  result = dom.window.document.querySelectorAll(".EntityList-item--Regular");
-  // for (let i = 0, element; (element = result[i]); i++) {
-  //   console.log(element.innerHTML);
-  // }
+  const result = dom.window.document.querySelectorAll(".EntityList-item--Regular");
+  for (let i = 0, element; (element = result[i]); i++) {
+    console.log(element.innerHTML);
+  }
 
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href;
