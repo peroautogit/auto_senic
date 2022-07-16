@@ -75,7 +75,7 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
-  console.log('Ovo je htmlstring /n'{htmlString})
+  console.log('Ovo je htmlstring /n'+{htmlString})
   const dom = new jsdom.JSDOM(htmlString);
  
 
@@ -88,7 +88,7 @@ const runPuppeteer = async (url) => {
   
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
-    console.log('Ovo je urlpath /n'{urlPath});
+    console.log('Ovo je urlpath /n'+{urlPath});
 
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
