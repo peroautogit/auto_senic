@@ -86,8 +86,9 @@ const runPuppeteer = async (url) => {
   for (i = 0; i < result.length; i++) {
     console.log(result[i].innerHTML);
 }
-const vauvauoglasi = result.querySelector()
-const novioglasi= result.querySelector()
+const vauvauoglasi = result.querySelector('.EntityList-Standard:nth-child(1)')
+const novioglasi= result.querySelector('.EntityList-Standard:nth-child(2)')
+
   // const podresult =dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd")
   // console.log('ovo je podresult /n: '+ podresult)
   for (const element of novioglasi) {
@@ -106,6 +107,23 @@ const novioglasi= result.querySelector()
       });
     }
   }
+  for (const element of vauvauoglasi) {
+    const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
+    console.log('Ovo je urlpath '+urlPath);
+
+    let path = urlPath;
+    if (!path.includes("https://www.njuskalo.hr")&&path!==undefined) {
+      path = `https://www.njuskalo.hr${urlPath}`;
+    }
+    path = path.replace("?navigateSource=resultlist", ""); 
+    if (path && !pastResults.has(path) && !newResults.has(path)) {
+      newResults.add(path);
+      houses.push({
+        path,
+      });
+    }
+  }
+
 
   console.log("closing browser");
   await browser.close();
