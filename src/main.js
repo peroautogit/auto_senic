@@ -83,7 +83,9 @@ const runPuppeteer = async (url) => {
 
   console.log("parsing njuskalo.hr data");
   const result =dom.window.document.querySelectorAll(".block-standard.block-standard--epsilon"); // do tuda radi kako treba, neznam sta tu treeba hvatat
-  console.log('Ovo je rezultat /n'+result);
+  for (let i = 0, element; (element = result[i]); i++) {
+    console.log(element);
+}
   // const podresult =dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd")
   // console.log('ovo je podresult /n: '+ podresult)
   for (const element of result) {
