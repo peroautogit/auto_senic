@@ -85,7 +85,7 @@ const runPuppeteer = async (url) => {
 }
 
   for (const element of result) {
-    const urlPath = element.href; 
+    const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
     console.log('Ovo je urlpath '+urlPath);
 
     let path = urlPath;
