@@ -74,9 +74,9 @@ const runPuppeteer = async (url) => {
   console.log("going to njuskalo on link"+ url);
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
-  const htmlString = await page.content();
+  let htmlString = await page.content();
  
-  const dom = new jsdom.JSDOM(htmlString);
+  let dom = new jsdom.JSDOM(htmlString);
  
   console.log("parsing njuskalo.hr data");
   let result = dom.window.document.querySelectorAll(".EntityList-item--Regular");
@@ -101,6 +101,8 @@ const runPuppeteer = async (url) => {
     }
   }
 
+  htmlString = ''
+  dom = '';
   result = '';
 
   console.log("closing browser");
