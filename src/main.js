@@ -15,8 +15,8 @@ const houses = [];
 const { CHAT_ID, BOT_API } = process.env;
 
 const urls = [
-  " https://www.njuskalo.hr/prodaja-kuca",
-  " https://www.njuskalo.hr/prodaja-stanova",
+  "https://www.njuskalo.hr/prodaja-kuca",
+  "https://www.njuskalo.hr/prodaja-stanova",
 ];
 
 const runTask = async () => {
@@ -82,7 +82,7 @@ const runPuppeteer = async (url) => {
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
-  console.log(result)
+  console.log('%NodeList',result)
   for (let i = 0, element; (element = result[i]); i++) {
     console.log('ovo je element'+element.innerHTML);
   }
