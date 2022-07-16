@@ -80,6 +80,7 @@ const runPuppeteer = async (url) => {
  
   console.log("parsing njuskalo.hr data");
   const result =dom.window.document.querySelectorAll(".EntityList-Item--Regular");
+  console.log(result);
 
   for (const element of result) {
     const urlPath = element.href; 
