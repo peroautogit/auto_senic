@@ -84,7 +84,7 @@ const runPuppeteer = async (url) => {
 
 
   console.log("parsing njuskalo.hr data");
-  const result = document.querySelector("#form_browse_detailed_search > div > div.content-main > div.block-standard.block-standard--epsilon > div.EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd.EntityList > ul"); // do tuda radi kako treba, neznam sta tu treeba hvatat
+  const result = document.querySelector("#form_browse_detailed_search > div > div.content-main > div.block-standard.block-standard--epsilon > div.EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd > ul"); // do tuda radi kako treba, neznam sta tu treeba hvatat
   console.log({result});
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href; 
