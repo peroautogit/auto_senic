@@ -78,7 +78,9 @@ const runPuppeteer = async (url) => {
 
   const htmlString = await page.content();
   const dom = new jsdom.JSDOM(htmlString);
-  console.log({dom});
+
+  const domWindowDoc = dom.window.document;
+  console.log({domWindowDoc});
 
   console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(".EntityList.EntityList--Standard.EntityList--Regular.EntityList--ListItemRegularAd"); // do tuda radi kako treba, neznam sta tu treeba hvatat
