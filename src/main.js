@@ -84,7 +84,7 @@ const runPuppeteer = async (url) => {
 
 
   console.log("parsing njuskalo.hr data");
-  const result =document.querySelectorAll(".block-standard.block-standard--epsilon"); // do tuda radi kako treba, neznam sta tu treeba hvatat
+  const result =dom.window.document.querySelectorAll(".block-standard.block-standard--epsilon"); // do tuda radi kako treba, neznam sta tu treeba hvatat
   console.log({result});
   
   
