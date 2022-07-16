@@ -75,7 +75,7 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
-  console.log('Ovo je htmlstring /n'+htmlString)
+ 
   const dom = new jsdom.JSDOM(htmlString);
  
 
