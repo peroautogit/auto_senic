@@ -81,7 +81,7 @@ const runPuppeteer = async (url) => {
   console.log("parsing njuskalo.hr data");
   const result =dom.window.document.querySelectorAll(".EntityList-item--Regular");
   for (let i = 0, element; (element = result[i]); i++) {
-    console.log(element);
+    console.log(element.innerHTML);
 }
 
   for (const element of result) {
