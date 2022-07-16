@@ -20,7 +20,7 @@ const urls = [
 ];
 
 const runTask = async () => {
-  for (const url of urls) {
+  for (let url of urls) {
     await runPuppeteer(url);
   }
 
@@ -78,12 +78,12 @@ const runPuppeteer = async (url) => {
 
   const dom = new jsdom.JSDOM(htmlString);
 
-  console.log("parsing njuskalo.hr data" + url);
+  console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
   for (let i = 0, element; (element = result[i]); i++) {
-    console.log(element.innerHTML);
+    console.log('ovo je element'+element.innerHTML);
   }
 
   for (const element of result) {
