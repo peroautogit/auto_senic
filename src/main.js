@@ -78,6 +78,7 @@ const runPuppeteer = async (url) => {
 
   const htmlString = await page.content();
   const dom = new jsdom.JSDOM(htmlString);
+  console.log({dom});
 
   const domWindowDoc = dom.window.document;
   console.log({domWindowDoc});
