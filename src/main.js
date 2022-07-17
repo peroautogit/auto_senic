@@ -103,9 +103,9 @@ const runPuppeteer = async (url) => {
   }
 
   console.log("closing page");
-  await page.close();
+  await browser.close();
 };
-await browser.close
+
 if (CHAT_ID && BOT_API) {
   runTask();
 } else {
