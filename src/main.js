@@ -3,24 +3,25 @@ const { writeFileSync, readFileSync } = require("fs");
 const puppeteer = require("puppeteer");
 const jsdom = require("jsdom");
 const nodeFetch = require("node-fetch");
-
 const WIDTH = 1920;
 const HEIGHT = 1080;
-
 const data = readFileSync("db.json", { encoding: "utf8", flag: "r" });
 const pastResults = new Set(JSON.parse(data) || []);
 console.log("pastResults:", pastResults);
 const newResults = new Set();
 const houses = [];
 const { CHAT_ID, BOT_API } = process.env;
-
 const urls = [
   "https://www.njuskalo.hr/prodaja-kuca",
   "https://www.njuskalo.hr/prodaja-stanova",
 ];
 
 const runTask = async () => {
-  for (let url of urls) {
+  // for (let url of urls) {
+  //   await runPuppeteer(url);
+  // }
+  for (let i = 0; i < urls.length; i++) {
+    const url = urls[i];
     await runPuppeteer(url);
   }
 
@@ -75,23 +76,22 @@ const runPuppeteer = async (url) => {
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
-
+  console.log("ovo je html string" + htmlString);
   const dom = new jsdom.JSDOM(htmlString);
-
+  console.log("ovo je dom" + dom.inneerHtml);
   console.log("parsing njuskalo.hr data");
-  let result = dom.window.document.querySelectorAll(
+  const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
-  for (let i = 0, element; (element = result[i]); i++) {
-    console.log('ovo je element'+element.innerHTML);
-  }
+  // for (let i = 0, element; (element = result[i]); i++) {
+  //   console.log("ovo je element" + element.innerHTML);
+  // }
 
   for (const element of result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href;
-    // console.log('Ovo je urlpath '+urlPath);
-
+    console.log("Ovo je urlpath " + "/n" + urlPath);
     let path = urlPath;
-    if (!path.includes("https://www.njuskalo.hr") && path !== undefined) {
+    if (!path.includes("https://www.njuskalo.hr")) {
       path = `https://www.njuskalo.hr${urlPath}`;
     }
     if (path && !pastResults.has(path) && !newResults.has(path)) {
