@@ -72,8 +72,7 @@ const runPuppeteer = async (url) => {
   await page.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
-  cookies = await page.cookies();
-  console.log('OVO SU cookie'+cookies);
+  
   //   const cookie = {
   //     name: 'oauth',
   //     value: oauthCookie,
@@ -93,6 +92,8 @@ const runPuppeteer = async (url) => {
   const dom = new jsdom.JSDOM(htmlString);
   // console.log("ovo je dom" + JSON.stringify(dom,""));
   console.log("parsing njuskalo.hr data");
+  cookies = await page.cookies();
+  console.log('OVO SU cookie'+cookies);
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
