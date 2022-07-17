@@ -73,7 +73,7 @@ const runPuppeteer = async (url) => {
   );
   page.setDefaultNavigationTimeout(0);
   console.log("going to njuskalo on link" + url);
-  await page.goto(url, { waitUntil: "domcontentloaded" });
+  await page.goto(url, { waitUntil: "domcontentloaded",timeout:30000 });
 
   const htmlString = await page.content();
   
