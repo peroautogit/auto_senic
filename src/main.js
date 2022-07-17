@@ -93,7 +93,10 @@ const runPuppeteer = async (url) => {
   // console.log("ovo je dom" + JSON.stringify(dom,""));
   console.log("parsing njuskalo.hr data");
   cookies = await page.cookies();
-  console.log('OVO SU cookie'+cookies);
+  console.log('OVO SU cookie'+cookies.innerHTML);
+  for(let i = 0, element; (element= cookies[i]); i++){
+    console.log(JSON.stringify(element))
+  }
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
   );
