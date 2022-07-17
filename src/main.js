@@ -71,14 +71,14 @@ const runPuppeteer = async (url) => {
   await page.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
-
+  page.setDefaultNavigationTimeout(0);
   console.log("going to njuskalo on link" + url);
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const htmlString = await page.content();
-  console.log("ovo je html string" + htmlString);
+  
   const dom = new jsdom.JSDOM(htmlString);
-  console.log("ovo je dom" + dom.inneerHtml);
+  console.log("ovo je dom" + JSON.stringify(dom,""));
   console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
@@ -87,7 +87,7 @@ const runPuppeteer = async (url) => {
   //   console.log("ovo je element" + element.innerHTML);
   // }
 
-  for (const element of result) {
+  for (const element of await result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href;
     console.log("Ovo je urlpath " + "/n" + urlPath);
     let path = urlPath;
@@ -102,10 +102,10 @@ const runPuppeteer = async (url) => {
     }
   }
 
-  console.log("closing browser");
-  await browser.close();
+  console.log("closing page");
+  await page.close();
 };
-
+await browser.close
 if (CHAT_ID && BOT_API) {
   runTask();
 } else {
