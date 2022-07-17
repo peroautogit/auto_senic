@@ -71,14 +71,26 @@ const runPuppeteer = async (url) => {
   await page.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
+  const cookies = await page.cookies();
+  console.log(cookies);
+  //   const cookie = {
+  //     name: 'oauth',
+  //     value: oauthCookie,
+  //     domain: 'full.domain.com',   //please write full domain here, otherwise it will not work
+  //     url: 'https://full.domain.com/',
+  //     path: '/',
+  //     'Max-Age': '31536000', //year
+  //   };
+
+  // await page.setCookie(cookie);
   page.setDefaultNavigationTimeout(0);
   console.log("going to njuskalo on link" + url);
-  await page.goto(url, { waitUntil: "domcontentloaded",timeout:30000 });
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
 
   const htmlString = await page.content();
-  
+
   const dom = new jsdom.JSDOM(htmlString);
-  console.log("ovo je dom" + JSON.stringify(dom,""));
+  // console.log("ovo je dom" + JSON.stringify(dom,""));
   console.log("parsing njuskalo.hr data");
   const result = dom.window.document.querySelectorAll(
     ".EntityList-item--Regular"
