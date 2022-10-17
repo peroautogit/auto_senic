@@ -77,7 +77,7 @@ const runPuppeteer = async (url) => {
   const cookies = await page.cookies();
   const cookieJson = JSON.stringify(cookies);
 
-  fs.writeFileSync("cookies.json", cookieJson);
+  writeFileSync("cookies.json", cookieJson);
   await page.screenshot({
     path: "screenshot.jpg",
   });
