@@ -1,1 +1,140 @@
-[{"name":"datadome","value":"YL2D.tXanFe0kNT29yYr~sQx-NBh2vzpdJrfAsyw-B1~lQBkIQe1.l~sMYqf.6Ty~1pRTKPCL6lsnPS21dF-jQo2-Z7FsAwFGoC5U6CSEf.BQmCrhYQTFfI6vJ5vuoN","domain":".avto.net","path":"/","expires":1697547251.24877,"size":135,"httpOnly":false,"secure":true,"session":false,"sameSite":"Lax","sameParty":false,"sourceScheme":"Secure","sourcePort":443}]
+[
+  {
+    "name": "_ym_uid",
+    "value": "1665656749956447173",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1697192749,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "_ym_d",
+    "value": "1665656749",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1697192749,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "_pbjs_userid_consent_data",
+    "value": "3524755945110770",
+    "domain": "www.avto.net",
+    "path": "/",
+    "expires": 1668601537,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_pubcid",
+    "value": "5322d9b7-5ead-4525-bb81-56b28e9568a0",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1697545537,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "CookieConsent",
+    "value": "{stamp:%27uSKIe14PL7f1qx66UQilB8Cq/569OBZ2TUfuAk7STUt0R24PxGGpiA==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cver:2%2Cutc:1665656775678%2Ciab2:%27CPgyVIAPgyVIACGABBENCkCgAP_AAH_AAAAAJDtd_H__bW9r-f5_aft0eY1P9_r37uQzDhfNk-8F3L_W_LwX52E7NF36tq4KmR4ku1LBIUNlHMHUDUmwaokVryHsak2cpzNKJ7BEknMZOydYGF9vmxtj-QKY7_5_d3bx2D-t_9v239z3z81Xn3d53-_03LCdV5_9Dfn9fR_bc9KPt_58v8v8_____3_e__3_7994JCAEmGrcQBdiWOBNoGEUCIEYVhIVQKACCgGFogMAHBwU7KwCfWECABAKAIwIgQ4AowIBAAABAEhEAEgRYIAAARAIAAQAIhEIACBgEFABYGAQAAgGgYohQACBIQZEBEUpgQEQJBAS2VCCUF0hphAHWWAFBIjYqABEAAArAAEBYOAYIkBKxYIEmKN8gBGCFAKJUK1AAAAA.YAAAAAAAAAAA%27%2Cgacm:%271~AAAAAAAAAAACAABAAAgAIAAABAAhAAAACAAAAAAAQAAQAAAAAAABBBAAIAAAAAAAAAAAAQAAAABAAAAAIgMAAAAAAAgAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAQAAAAAAFAAAABAAAAAAAAAAAARBAAAAAAAAAACAAABAAAAAAAAAAEAAAAAAABAAAAAEAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAACAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAQAAgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAkQAAAAAAAAAAAAAAAAQ=%27%2Cregion:%27hr%27}",
+    "domain": "www.avto.net",
+    "path": "/",
+    "expires": 1697192775,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "__gads",
+    "value": "ID=1c21a6e72c8653a6-228354a443ce00f5:T=1665656776:RT=1665656776:S=ALNI_MZVvejfvdJQhefReBHkb7WaiTQxUw",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1699352776,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "__tcf_ts",
+    "value": "16657498483932550",
+    "domain": "www.avto.net",
+    "path": "/",
+    "expires": 1697285848,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "_ym_isad",
+    "value": "2",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1666066663,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "__gpi",
+    "value": "UID=00000b72a3de48b9:T=1665749849:RT=1665994664:S=ALNI_MYH9lp_VlfpKpnpCkG0K8VH4eDtzw",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1699445849,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "ogledov",
+    "value": "",
+    "domain": "www.avto.net",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "model1",
+    "value": "Scenic",
+    "domain": "www.avto.net",
+    "path": "/",
+    "expires": 1666093479.308664,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "statAvtokatalog",
+    "value": "14",
+    "domain": "www.avto.net",
+    "path": "/",
+    "expires": 1666095937.072052,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "datadome",
+    "value": "j2W3f0W9aVu~-MxzaqIKj~dJU8.VCJwXpWqts~bnY7nYLUo3gvOQXSQWqec12LVqrvXKhzgSt0cXR-5k8xqYpst9IjuSfIIJz2Ut8LVfeLVR_65odBVz-79x3a1Ds17",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1697545537.558094,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cto_bundle",
+    "value": "fs9rUV81Z0ZVZDVhaUNQbFR5MWhqVlZkelFITFolMkJNbnF2dm9vb1ZudiUyRklQQVc5aW92ZWVVTFBTNVhYN1VWSkswZ0FJMkgwUnF4SEFNck84NFo4RU96JTJGYVpTNmslMkY1SVVWVEpYRzlwaTVtdyUyRmVUTURzMnRPVm4zZGclMkJGWnRiZklJazRNT2ElMkZKcXV1OVglMkJWMXZkYlBscVdCb2NnJTNEJTNE",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1699709137,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "cto_bidid",
+    "value": "KtEn_19TelZISWxaYkRiZXJ1Q2MyQXBZJTJGJTJGJTJCQzZUSDNRVTcxQUp2cGRzaWd2RHMlMkJESWlFTUtjV2pRb3VMWUxYbFdsVzBKZGkxUWFQeHVkbnEwb0lpWUd6VEg3V1UzajJlUXdzMEZXUE9XNHo4JTJCakElM0Q",
+    "domain": ".avto.net",
+    "path": "/",
+    "expires": 1699709137,
+    "httpOnly": false,
+    "secure": false
+  }
+]
