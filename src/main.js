@@ -55,7 +55,8 @@ const runPuppeteer = async (url) => {
   console.log("opening headless browser");
   const browser = await puppeteer.launch({
     headless: false,
-    args: [`--window-size=${WIDTH},${HEIGHT}`],
+    IgnoreHTTPSErrors: true,
+    args: [`--window-size=${WIDTH},${HEIGHT}`, '--no-sandbox'],
     defaultViewport: {
       width: WIDTH,
       height: HEIGHT,
@@ -81,6 +82,7 @@ const runPuppeteer = async (url) => {
   console.log("parsing avto.net data");
 
   const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
+  console.log({ result });
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a.stretched-link")?.[0]?.href;
     console.log(urlPath);
