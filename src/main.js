@@ -79,8 +79,7 @@ const runPuppeteer = async (url) => {
   console.log("parsing avto.net data");
 
   const result = dom.window.document.querySelectorAll("a.stretched-link");
-  var resultarr = Array.from(result);
-  console.log(resultarr);
+  console.log(result);
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a.stretched-link")?.[0]?.href;
     console.log(urlPath);
