@@ -69,16 +69,16 @@ const runPuppeteer = async (url) => {
   );
 
   page.setDefaultNavigationTimeout(0);
-  console.log("going to njuskalo on link" + url);
+  console.log("otvaranje" + url);
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
 
   const htmlString = await page.content();
 
   const dom = new jsdom.JSDOM(htmlString);
   // console.log("ovo je dom" + JSON.stringify(dom,""));
-  console.log("parsing njuskalo.hr data");
+  console.log("parsing avto.net data");
 
-  const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
+  const result = dom.window.document.querySelectorAll("a.stretched-link");
   var resultarr = Array.from(result);
   console.log(resultarr);
   for (const element of await result) {
