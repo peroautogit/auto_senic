@@ -79,12 +79,8 @@ const runPuppeteer = async (url) => {
   console.log("parsing njuskalo.hr data");
 
   const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
-<<<<<<< HEAD
   var resultarr = Array.from(result);
   console.log(resultarr);
-=======
-  console.log({result});
->>>>>>> 2a5f5cb96eb5b87ed16a317a0ee4c5558904bd54
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a.stretched-link")?.[0]?.href;
     console.log(urlPath);
