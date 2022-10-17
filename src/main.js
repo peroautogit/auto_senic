@@ -9,18 +9,13 @@ const data = readFileSync("db.json", { encoding: "utf8", flag: "r" });
 const pastResults = new Set(JSON.parse(data) || []);
 console.log("pastResults:", pastResults);
 const newResults = new Set();
-const houses = [];
+const cars = [];
 const { CHAT_ID, BOT_API } = process.env;
 const urls = [
-  "https://www.njuskalo.hr/prodaja-kuca",
-  "https://www.njuskalo.hr/prodaja-stanova",
+  "https://www.avto.net/Ads/results.asp?znamka=Renault&model=Scenic&modelID=&tip=katerikoli%20tip&znamka2=&model2=&tip2=katerikoli%20tip&znamka3=&model3=&tip3=katerikoli%20tip&cenaMin=0&cenaMax=999999&letnikMin=2004&letnikMax=2009&bencin=0&starost2=999&oblika=0&ccmMin=0&ccmMax=99999&mocMin=0&mocMax=999999&kmMin=0&kmMax=9999999&kwMin=0&kwMax=999&motortakt=0&motorvalji=0&lokacija=0&sirina=0&dolzina=&dolzinaMIN=0&dolzinaMAX=100&nosilnostMIN=0&nosilnostMAX=999999&lezisc=&presek=0&premer=0&col=0&vijakov=0&EToznaka=0&vozilo=&airbag=&barva=&barvaint=&EQ1=1000000000&EQ2=1000000000&EQ3=1000000000&EQ4=100000000&EQ5=1000000000&EQ6=1000000000&EQ7=1110100120&EQ8=101000000&EQ9=1000000000&KAT=1012000000&PIA=&PIAzero=&PIAOut=&PSLO=&akcija=0&paketgarancije=&broker=0&prikazkategorije=0&kategorija=0&ONLvid=0&ONLnak=0&zaloga=10&arhiv=0&presort=3&tipsort=DESC&stran=2",
 ];
-cookies = [];
 
 const runTask = async () => {
-  // for (let url of urls) {
-  //   await runPuppeteer(url);
-  // }
   for (let i = 0; i < urls.length; i++) {
     const url = urls[i];
     await runPuppeteer(url);
@@ -35,7 +30,7 @@ const runTask = async () => {
     );
 
     console.log("sending messages to Telegram");
-    houses.forEach(({ path }) => {
+    cars.forEach(({ path }) => {
       let glava = `Nova nekretnina na njuškalu: [click here](${path})`;
       nodeFetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
         method: "POST",
@@ -72,17 +67,7 @@ const runPuppeteer = async (url) => {
   await page.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
-  
-  //   const cookie = {
-  //     name: 'oauth',
-  //     value: oauthCookie,
-  //     domain: 'full.domain.com',   //please write full domain here, otherwise it will not work
-  //     url: 'https://full.domain.com/',
-  //     path: '/',
-  //     'Max-Age': '31536000', //year
-  //   };
 
-  // await page.setCookie(cookie);
   page.setDefaultNavigationTimeout(0);
   console.log("going to njuskalo on link" + url);
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
@@ -92,17 +77,8 @@ const runPuppeteer = async (url) => {
   const dom = new jsdom.JSDOM(htmlString);
   // console.log("ovo je dom" + JSON.stringify(dom,""));
   console.log("parsing njuskalo.hr data");
-  cookies = await page.cookies();
-  console.log('OVO SU cookie'+cookies.innerHTML);
-  for(let i = 0, element; (element= cookies[i]); i++){
-    console.log(JSON.stringify(element))
-  }
-  const result = dom.window.document.querySelectorAll(
-    ".EntityList-item--Regular"
-  );
-  // for (let i = 0, element; (element = result[i]); i++) {
-  //   console.log("ovo je element" + element.innerHTML);
-  // }
+
+  const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
 
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href;
@@ -113,7 +89,7 @@ const runPuppeteer = async (url) => {
     }
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
-      houses.push({
+      cars.push({
         path,
       });
     }
