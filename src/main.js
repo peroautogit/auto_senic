@@ -75,7 +75,7 @@ const runPuppeteer = async (url) => {
     path: "screenshot.jpg",
   });
   const htmlString = await page.content();
-
+  console.log(htmlString);
   const dom = new jsdom.JSDOM(htmlString);
   console.log("ovo je dom" + JSON.stringify(dom, ""));
   console.log("parsing avto.net data");
