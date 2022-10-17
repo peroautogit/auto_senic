@@ -54,9 +54,9 @@ const runTask = async () => {
 const runPuppeteer = async (url) => {
   console.log("opening headless browser");
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     IgnoreHTTPSErrors: true,
-    args: [`--window-size=${WIDTH},${HEIGHT}`, '--no-sandbox'],
+    args: [`--window-size=${WIDTH},${HEIGHT}`, "--no-sandbox"],
     defaultViewport: {
       width: WIDTH,
       height: HEIGHT,
