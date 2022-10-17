@@ -70,8 +70,7 @@ const runPuppeteer = async (url) => {
 
   page.setDefaultNavigationTimeout(0);
   console.log("otvaranje" + url);
-  await page.goto(url, { waitUntil: "documentloaded" });
-  await page.waitForSelector("div.col-12.col-lg-9", { visible: true });
+  await page.goto(url, { waitUntil: ["domcontentloaded", "networkidle0"] });
   await page.screenshot({
     path: "screenshot.jpg",
   });
@@ -81,7 +80,7 @@ const runPuppeteer = async (url) => {
   console.log("ovo je dom" + JSON.stringify(dom, ""));
   console.log("parsing avto.net data");
 
-  const result = dom.window.document.querySelectorAll("a.stretched-link");
+  const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a.stretched-link")?.[0]?.href;
     console.log(urlPath);
