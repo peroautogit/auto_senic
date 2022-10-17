@@ -12,7 +12,8 @@ const newResults = new Set();
 const cars = [];
 const { CHAT_ID, BOT_API } = process.env;
 const urls = [
-  "https://www.avto.net/Ads/results.asp?znamka=Renault&model=Scenic&modelID=&tip=&znamka2=&model2=&tip2=&znamka3=&model3=&tip3=&cenaMin=0&cenaMax=999999&letnikMin=2004&letnikMax=2011&bencin=0&starost2=999&oblika=&ccmMin=0&ccmMax=99999&mocMin=&mocMax=&kmMin=0&kmMax=9999999&kwMin=0&kwMax=999&motortakt=&motorvalji=&lokacija=0&sirina=&dolzina=&dolzinaMIN=&dolzinaMAX=&nosilnostMIN=&nosilnostMAX=&lezisc=&presek=&premer=&col=&vijakov=&EToznaka=&vozilo=&airbag=&barva=&barvaint=&EQ1=1000000000&EQ2=1000000000&EQ3=1000000000&EQ4=100000000&EQ5=1000000000&EQ6=1000000000&EQ7=1110100120&EQ8=101000000&EQ9=1000000000&KAT=1012000000&PIA=&PIAzero=&PIAOut=&PSLO=&akcija=&paketgarancije=0&broker=&prikazkategorije=&kategorija=&ONLvid=&ONLnak=&zaloga=10&arhiv=&presort=&tipsort=&stran="];
+  "https://www.avto.net/Ads/results.asp?znamka=Renault&model=Scenic&modelID=&tip=&znamka2=&model2=&tip2=&znamka3=&model3=&tip3=&cenaMin=0&cenaMax=999999&letnikMin=2004&letnikMax=2011&bencin=0&starost2=999&oblika=&ccmMin=0&ccmMax=99999&mocMin=&mocMax=&kmMin=0&kmMax=9999999&kwMin=0&kwMax=999&motortakt=&motorvalji=&lokacija=0&sirina=&dolzina=&dolzinaMIN=&dolzinaMAX=&nosilnostMIN=&nosilnostMAX=&lezisc=&presek=&premer=&col=&vijakov=&EToznaka=&vozilo=&airbag=&barva=&barvaint=&EQ1=1000000000&EQ2=1000000000&EQ3=1000000000&EQ4=100000000&EQ5=1000000000&EQ6=1000000000&EQ7=1110100120&EQ8=101000000&EQ9=1000000000&KAT=1012000000&PIA=&PIAzero=&PIAOut=&PSLO=&akcija=&paketgarancije=0&broker=&prikazkategorije=&kategorija=&ONLvid=&ONLnak=&zaloga=10&arhiv=&presort=&tipsort=&stran=",
+];
 
 const runTask = async () => {
   for (let i = 0; i < urls.length; i++) {
@@ -30,7 +31,7 @@ const runTask = async () => {
 
     console.log("sending messages to Telegram");
     cars.forEach(({ path }) => {
-      let glava = `Nova nekretnina na njuškalu: [click here](${path})`;
+      let glava = `Novi auto na avto.net: [click here](${path})`;
       nodeFetch(`https://api.telegram.org/bot${BOT_API}/sendMessage`, {
         method: "POST",
         headers: {
@@ -53,7 +54,7 @@ const runTask = async () => {
 const runPuppeteer = async (url) => {
   console.log("opening headless browser");
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     args: [`--window-size=${WIDTH},${HEIGHT}`],
     defaultViewport: {
       width: WIDTH,
@@ -69,16 +70,18 @@ const runPuppeteer = async (url) => {
 
   page.setDefaultNavigationTimeout(0);
   console.log("otvaranje" + url);
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await page.goto(url, { waitUntil: "networkidle0" });
 
+  await page.screenshot({
+    path: "screenshot.jpg",
+  });
   const htmlString = await page.content();
 
   const dom = new jsdom.JSDOM(htmlString);
-  console.log("ovo je dom" + JSON.stringify(dom, ""));
+  dom?.console.log("ovo je dom" + JSON.stringify(dom, ""));
   console.log("parsing avto.net data");
 
   const result = dom.window.document.querySelectorAll("a.stretched-link");
-  console.log(result);
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a.stretched-link")?.[0]?.href;
     console.log(urlPath);
