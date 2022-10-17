@@ -70,8 +70,8 @@ const runPuppeteer = async (url) => {
 
   page.setDefaultNavigationTimeout(0);
   console.log("otvaranje" + url);
-  await page.goto(url, { waitUntil: "networkidle0" });
-
+  await page.goto(url, { waitUntil: "documentloaded" });
+  await page.waitForSelector("div.col-12.col-lg-9", { visible: true });
   await page.screenshot({
     path: "screenshot.jpg",
   });
