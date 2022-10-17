@@ -75,7 +75,7 @@ const runPuppeteer = async (url) => {
   const htmlString = await page.content();
 
   const dom = new jsdom.JSDOM(htmlString);
-  // console.log("ovo je dom" + JSON.stringify(dom,""));
+  console.log("ovo je dom" + JSON.stringify(dom, ""));
   console.log("parsing avto.net data");
 
   const result = dom.window.document.querySelectorAll("a.stretched-link");
