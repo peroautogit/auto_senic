@@ -81,12 +81,12 @@ const runPuppeteer = async (url) => {
   const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
   console.log(result);
   for (const element of await result) {
-    const urlPath = element?.querySelectorAll("a")?.[0]?.href;
+    const urlPath = element?.querySelectorAll("a.stretched-link")?.[0]?.href;
     console.log(urlPath);
     console.log("Ovo je urlpath " + "/n" + urlPath);
     let path = urlPath;
-    if (!path.includes("https://www.njuskalo.hr")) {
-      path = `https://www.njuskalo.hr${urlPath}`;
+    if (!path.includes("https://www.avto.net")) {
+      path = `https://www.avto.net${urlPath}`;
     }
     if (path && !pastResults.has(path) && !newResults.has(path)) {
       newResults.add(path);
