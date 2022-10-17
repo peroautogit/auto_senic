@@ -65,7 +65,10 @@ const runPuppeteer = async (url) => {
 
   const page = await browser.newPage();
   // https://stackoverflow.com/a/51732046/4307769 https://stackoverflow.com/a/68780400/4307769
+  const cookies = readFileSync("cookies.json", "utf8");
 
+  const deserializedCookies = JSON.parse(cookies);
+  await page.setCookie(...deserializedCookies);
   await page.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
@@ -74,10 +77,6 @@ const runPuppeteer = async (url) => {
   console.log("otvaranje" + url);
   await page.goto(url, { waitUntil: ["domcontentloaded", "networkidle0"] });
 
-  const cookies = await page.cookies();
-  const cookieJson = JSON.stringify(cookies);
-
-  writeFileSync("cookies.json", cookieJson);
   await page.screenshot({
     path: "screenshot.jpg",
   });
