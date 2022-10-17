@@ -79,9 +79,10 @@ const runPuppeteer = async (url) => {
   console.log("parsing njuskalo.hr data");
 
   const result = dom.window.document.querySelectorAll("div.col-12.col-lg-9");
-
+  console.log(result);
   for (const element of await result) {
     const urlPath = element?.querySelectorAll("a")?.[0]?.href;
+    console.log(urlPath);
     console.log("Ovo je urlpath " + "/n" + urlPath);
     let path = urlPath;
     if (!path.includes("https://www.njuskalo.hr")) {
