@@ -60,7 +60,7 @@ const runPuppeteer = async (url) => {
   });
 
   const page = await browser.newPage();
-  await puppeteer.setViewport({
+  await page.setViewport({
     width: WIDTH,
     height: HEIGHT,
   });
@@ -73,11 +73,9 @@ const runPuppeteer = async (url) => {
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
   );
 
- 
   console.log("otvaranje" + url);
   await page.goto(url, { waitUntil: ["domcontentloaded", "networkidle0"] });
 
- 
   const htmlString = await page.content();
   console.log(htmlString);
   const dom = new jsdom.JSDOM(htmlString);
